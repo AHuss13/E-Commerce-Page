@@ -3,6 +3,7 @@ const { Category, Product } = require("../../models");
 
 // The `/api/categories` endpoint
 
+// ALT
 // router.get('/', (req, res) => {
 //   // find all categories
 //   Category.findAll()
