@@ -17,7 +17,7 @@ Update .env with user settings
 
 # Usage
 
-![Walkthrough video](./Walkthrough%20Video/)
+![Walkthrough video](./Demo%20Video/E-Commerce%20Demo.mp4)
 
 ## License
 
