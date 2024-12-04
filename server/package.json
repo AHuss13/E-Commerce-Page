@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce-server",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "scripts": {
+    "start": "node build/server.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon build/server.js\"",
+    "build": "tsc",
+    "seed": "ts-node src/seeds/index.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.5",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
