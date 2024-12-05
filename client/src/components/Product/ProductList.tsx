@@ -26,22 +26,22 @@ const ProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<string>("all");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [productsRes, categoriesRes] = await Promise.all([
-          api.getProducts(),
-          api.getCategories(),
-        ]);
-        setProducts(productsRes.data);
-        setCategories(categoriesRes.data);
-      } catch (err) {
-        setError("Failed to fetch data");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const [productsRes, categoriesRes] = await Promise.all([
+        api.getProducts(),
+        api.getCategories(),
+      ]);
+      setProducts(productsRes.data);
+      setCategories(categoriesRes.data);
+    } catch (err) {
+      setError("Failed to fetch data");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -59,9 +59,15 @@ const ProductList = () => {
     if (priceRange === "under25") matchesPrice = price < 25;
     if (priceRange === "25to50") matchesPrice = price >= 25 && price <= 50;
     if (priceRange === "over50") matchesPrice = price > 50;
+    if (priceRange === "over300") matchesPrice = price > 300;
 
     return matchesSearch && matchesCategory && matchesPrice;
   });
+
+  const handleProductDelete = () => {
+    // Refresh the products list after deletion
+    fetchData();
+  };
 
   if (loading) return <LoadingSpinner />;
   if (error) return <Alert severity="error">{error}</Alert>;
@@ -107,6 +113,7 @@ const ProductList = () => {
                 <MenuItem value="under25">Under $25</MenuItem>
                 <MenuItem value="25to50">$25 to $50</MenuItem>
                 <MenuItem value="over50">Over $50</MenuItem>
+                <MenuItem value="over300">Over $300</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -116,7 +123,7 @@ const ProductList = () => {
       <Grid container spacing={3}>
         {filteredProducts.map((product) => (
           <Grid item xs={12} sm={6} md={4} key={product.id}>
-            <ProductCard product={product} />
+            <ProductCard product={product} onDelete={handleProductDelete} />
           </Grid>
         ))}
       </Grid>
