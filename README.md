@@ -1,4 +1,4 @@
-# E-Eommerce Page
+# E-Commerce Page
 
 ## Description
 
