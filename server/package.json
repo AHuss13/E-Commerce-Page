@@ -6,6 +6,7 @@
     "start": "node dist/server.js",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/server.js\"",
     "build": "tsc",
+    "postinstall": "tsc",
     "seed": "ts-node src/seeds/index.ts",
     "watch": "tsc -w"
   },
