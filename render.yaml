@@ -5,9 +5,9 @@ services:
     plan: free
     buildCommand: |
       pnpm install
-      cd server && pnpm install && pnpm run build
+      cd server && pnpm install && rm -rf dist && pnpm run build
       cd ../client && pnpm install && pnpm run build
-    startCommand: cd server && NODE_ENV=production node dist/server.js
+    startCommand: cd server && ls -la dist && NODE_ENV=production node dist/server.js
     envVars:
       - key: NODE_ENV
         value: production
