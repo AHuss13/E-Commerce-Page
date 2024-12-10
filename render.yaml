@@ -3,6 +3,7 @@ services:
     name: ecommerce-app
     env: node
     plan: free
+    region: ohio
     buildCommand: |
       pnpm install
       cd server
@@ -25,29 +26,25 @@ services:
       - key: PORT
         value: 3001
       - key: DB_HOST
-        fromDatabase:
-          name: ecommerce-db
+        fromService:
+          type: mysql
+          name: mysql-main
           property: host
       - key: DB_NAME
-        fromDatabase:
-          name: ecommerce-db
-          property: database
+        value: ecommerce_db
       - key: DB_USER
-        fromDatabase:
-          name: ecommerce-db
-          property: user
+        fromService:
+          type: mysql
+          name: mysql-main
+          property: username
       - key: DB_PASSWORD
-        fromDatabase:
-          name: ecommerce-db
+        fromService:
+          type: mysql
+          name: mysql-main
           property: password
-      - key: DB_PORT
-        fromDatabase:
-          name: ecommerce-db
-          property: port
 
-databases:
-  - name: ecommerce-db
+  - type: mysql
+    name: mysql-main
     plan: free
-    type: mysql
-    version: "8"
     ipAllowList: []  # Allow all IPs
+    region: ohio
