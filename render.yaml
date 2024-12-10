@@ -15,10 +15,8 @@ services:
       cd server
       echo "Current directory:"
       pwd
-      echo "Directory contents:"
-      ls -la
-      echo "Dist directory contents:"
-      ls -la dist || echo "No dist directory found"
+      echo "Environment variables:"
+      env | grep DB_
       echo "Starting server..."
       NODE_ENV=production node dist/server.js
     envVars:
