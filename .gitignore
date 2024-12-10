@@ -5,3 +5,6 @@ client/build
 server/build
 client/dist
 server/dist
+pnpm-debug.log
+npm-debug.log
+.env.local
