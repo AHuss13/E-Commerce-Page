@@ -21,7 +21,7 @@
     "wait-on": "^8.0.1"
   },
   "engines": {
-    "node": "18.x",
+    "node": "21.x",
     "pnpm": "9.x"
   }
 }
