@@ -1,17 +1,22 @@
 {
   "name": "e-commerce-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "build": "cd server && pnpm run build && cd ../client && pnpm run build",
     "dev": "concurrently \"cd server && pnpm run dev\" \"wait-on tcp:3001 && cd client && pnpm run dev\"",
     "install": "cd server && pnpm i && cd ../client && pnpm i",
     "seed": "cd server && pnpm run seed",
-    "start": "cd server && pnpm start"
+    "start": "cd server && pnpm start",
+    "watch": "cd server && pnpm run watch",
+    "clean": "rm -rf */dist */node_modules"
   },
   "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "typescript": "^5.7.2",
-    "vite": "^6.0.2"
+    "wait-on": "^8.0.1"
   }
 }

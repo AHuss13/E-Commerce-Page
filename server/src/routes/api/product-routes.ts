@@ -48,14 +48,14 @@ router.post("/", async (req: Request, res: Response) => {
 });
 
 // update product
-router.put("/:id", (req, res) => {
+router.put("/:id", async (req: Request, res: Response) => {
   // update product data
   Product.update(req.body, {
     where: {
       id: req.params.id,
     },
   })
-    .then((product) => {
+    .then(async (product) => {
       if (req.body.tagIds && req.body.tagIds.length) {
         ProductTag.findAll({
           where: { product_id: req.params.id },
@@ -85,20 +85,34 @@ router.put("/:id", (req, res) => {
       return res.json(product);
     })
     .catch((err) => {
-      // console.log(err);
       res.status(400).json(err);
     });
 });
 
 // delete one product by its `id` value
-router.delete("/:id", async (req, res) => {
-  const results = await Product.destroy({
-    where: {
-      id: req.params.id,
-    },
-  });
+router.delete("/:id", async (req: Request, res: Response) => {
+  try {
+    // delete all associated product_tags
+    await ProductTag.destroy({
+      where: { product_id: req.params.id },
+    });
 
-  res.json(results);
+    // delete the product
+    const product = await Product.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!product) {
+      res.status(404).json({ message: "No product found with this id" });
+      return;
+    }
+
+    res.status(204).end();
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 export default router;

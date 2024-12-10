@@ -31,6 +31,66 @@ const productData = [
     stock: 22,
     category_id: 2,
   },
+  {
+    product_name: "iPhone 15 Pro",
+    price: 999.99,
+    stock: 15,
+    category_id: 6,
+  },
+  {
+    product_name: "Air Fryer",
+    price: 89.99,
+    stock: 20,
+    category_id: 7,
+  },
+  {
+    product_name: "Harry Potter Collection",
+    price: 49.99,
+    stock: 30,
+    category_id: 8,
+  },
+  {
+    product_name: "Yoga Mat",
+    price: 24.99,
+    stock: 40,
+    category_id: 9,
+  },
+  {
+    product_name: "Smart Watch",
+    price: 199.99,
+    stock: 18,
+    category_id: 6,
+  },
+  {
+    product_name: "Gaming Console",
+    price: 499.99,
+    stock: 10,
+    category_id: 11,
+  },
+  {
+    product_name: "Camping Tent",
+    price: 199.99,
+    stock: 15,
+    category_id: 12,
+  },
+  {
+    product_name: "Luxury Skincare Set",
+    price: 89.99,
+    stock: 25,
+    category_id: 13,
+  },
+  {
+    product_name: "Pet Bed",
+    price: 45.99,
+    stock: 30,
+    category_id: 14,
+  },
+  {
+    product_name: "LEGO Set",
+    price: 59.99,
+    stock: 20,
+    category_id: 15,
+  },
 ];
 
 const seedProducts = () => Product.bulkCreate(productData);

@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "main": "server.ts",
   "scripts": {
-    "start": "node build/server.js",
-    "dev": "concurrently \"tsc -w\" \"nodemon build/server.js\"",
+    "start": "node dist/server.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon dist/server.js\"",
     "build": "tsc",
-    "seed": "ts-node src/seeds/index.ts"
+    "seed": "ts-node src/seeds/index.ts",
+    "watch": "tsc -w"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "mysql2": "^3.11.5",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

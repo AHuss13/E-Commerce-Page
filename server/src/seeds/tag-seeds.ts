@@ -25,6 +25,36 @@ const tagData = [
   {
     tag_name: "pop culture",
   },
+  {
+    tag_name: "New Arrival",
+  },
+  {
+    tag_name: "Best Seller",
+  },
+  {
+    tag_name: "Sale",
+  },
+  {
+    tag_name: "Premium",
+  },
+  {
+    tag_name: "Limited Edition",
+  },
+  {
+    tag_name: "Trending Now",
+  },
+  {
+    tag_name: "Gift Idea",
+  },
+  {
+    tag_name: "Family Friendly",
+  },
+  {
+    tag_name: "Seasonal",
+  },
+  {
+    tag_name: "Clearance",
+  },
 ];
 
 const seedTags = () => Tag.bulkCreate(tagData);

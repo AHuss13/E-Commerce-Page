@@ -1,23 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import {
   Card,
   CardContent,
   CardMedia,
   Typography,
-  Button,
   Box,
   Chip,
+  Stack,
 } from "@mui/material";
 import { Product } from "../../types";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: Product;
+  onDelete?: () => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard = ({ product }: ProductCardProps) => {
+  const navigate = useNavigate();
+
   return (
-    <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+    <Card
+      onClick={() => navigate(`/products/${product.id}`)}
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        cursor: "pointer",
+      }}
+    >
       <CardMedia
         component="img"
         height="200"
@@ -32,29 +42,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           ${product.price}
         </Typography>
         <Box sx={{ mt: 1, mb: 2 }}>
-          <Chip
-            label={`Stock: ${product.stock}`}
-            color={product.stock > 0 ? "success" : "error"}
-            size="small"
-          />
-          {product.category && (
+          <Stack direction="row" spacing={1}>
             <Chip
-              label={product.category.category_name}
-              color="secondary"
+              label={`Stock: ${product.stock}`}
+              color={product.stock > 0 ? "success" : "error"}
               size="small"
-              sx={{ ml: 1 }}
             />
-          )}
+            {product.category && (
+              <Chip
+                label={product.category.category_name}
+                color="secondary"
+                size="small"
+              />
+            )}
+          </Stack>
         </Box>
-        <Button
-          component={Link}
-          to={`/products/${product.id}`}
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
-          View Details
-        </Button>
       </CardContent>
     </Card>
   );
