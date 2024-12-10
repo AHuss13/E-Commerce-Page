@@ -1,6 +1,11 @@
+import dotenv from 'dotenv';
+import path from "path";
+
+// Load environment variables FIRST
+dotenv.config({ path: path.join(__dirname, '../../.env') });
+
 import express from "express";
 import cors from "cors";
-import path from "path";
 import routes from "./routes";
 import sequelize from "./config/connection";
 
@@ -10,6 +15,13 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+// Log to verify environment variables are loaded
+console.log('DB Config:', {
+  name: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  hasPassword: !!process.env.DB_PASSWORD
+});
 
 // API routes
 app.use("/api", routes);

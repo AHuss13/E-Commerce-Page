@@ -53,7 +53,7 @@ const ProductDetail = () => {
         <Typography gutterBottom variant="h4" component="div">
           {product.product_name}
         </Typography>
-        <Typography variant="h6" color="text.secondary">
+        <Typography variant="h6" color="text.primary">
           ${product.price}
         </Typography>
         <Typography variant="body1">Stock: {product.stock}</Typography>
@@ -65,10 +65,13 @@ const ProductDetail = () => {
             Tags: {product.tags?.map((tag) => tag.tag_name).join(", ")}
           </Typography>
         </Box>
+        <Box sx={{ mt: 3, display: "flex", justifyContent: "flex-end" }}>
+          <DeleteButton
+            onDelete={handleDelete}
+            itemName={product.product_name}
+          />
+        </Box>
       </CardContent>
-      <Box sx={{ mt: 2 }}>
-        <DeleteButton onDelete={handleDelete} itemName={product.product_name} />
-      </Box>
     </Card>
   );
 };
