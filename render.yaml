@@ -5,22 +5,22 @@ services:
     plan: free
     buildCommand: |
       pnpm install
-            cd server
+      cd server
       pnpm install
-      echo "Building server..."
-      rm -rf dist
-      npx tsc --project tsconfig.json
-      ls -la dist
+      pnpm run build
       cd ../client
       pnpm install
       pnpm run build
     startCommand: |
       cd server
+      echo "Current directory:"
       pwd
+      echo "Directory contents:"
       ls -la
-      ls -la dist || true
+      echo "Dist directory contents:"
+      ls -la dist || echo "No dist directory found"
+      echo "Starting server..."
       NODE_ENV=production node dist/server.js
-    startCommand: cd server && ls -la dist && NODE_ENV=production node dist/server.js
     envVars:
       - key: NODE_ENV
         value: production
