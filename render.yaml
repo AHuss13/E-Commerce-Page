@@ -42,9 +42,14 @@ services:
         fromDatabase:
           name: ecommerce-db
           property: password
+      - key: DB_PORT
+        fromDatabase:
+          name: ecommerce-db
+          property: port
 
 databases:
   - name: ecommerce-db
     plan: free
     type: mysql
     version: "8"
+    ipAllowList: []  # Allow all IPs
