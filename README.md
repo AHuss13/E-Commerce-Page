@@ -1,4 +1,4 @@
-# E-commerce Back End Challenge
+# E-Eommerce Page
 
 ## Description
 
