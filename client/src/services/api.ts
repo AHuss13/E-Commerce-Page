@@ -1,7 +1,8 @@
 import axios from "axios";
 import { Product, Category, Tag } from "../types";
 
-const API_BASE_URL = "http://localhost:3001/api";
+const API_BASE_URL =
+  process.env.NODE_ENV === "production" ? "/api" : "http://localhost:3001/api";
 
 export const api = {
   // Get endpoints
