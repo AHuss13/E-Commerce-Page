@@ -11,7 +11,8 @@
     "watch": "cd server && pnpm run watch",
     "clean": "rm -rf */dist */node_modules",
     "heroku-postbuild": "pnpm run build",
-    "postdeploy": "pnpm run seed"
+    "postdeploy": "pnpm run seed",
+    "deploy": "git push origin main && git push heroku main"
   },
   "dependencies": {
     "@types/node": "^22.10.1",
