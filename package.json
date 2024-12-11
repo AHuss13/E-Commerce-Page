@@ -10,7 +10,8 @@
     "start": "cd server && pnpm start",
     "watch": "cd server && pnpm run watch",
     "clean": "rm -rf */dist */node_modules",
-    "heroku-postbuild": "pnpm run build"
+    "heroku-postbuild": "pnpm run build",
+    "postdeploy": "pnpm run seed"
   },
   "dependencies": {
     "@types/node": "^22.10.1",
