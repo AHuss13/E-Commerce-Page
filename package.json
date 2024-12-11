@@ -12,13 +12,18 @@
     "clean": "rm -rf */dist */node_modules",
     "heroku-postbuild": "pnpm run build"
   },
-  "devDependencies": {
+  "dependencies": {
     "@types/node": "^22.10.1",
     "@vitejs/plugin-react": "^4.3.4",
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
     "typescript": "^5.7.2",
     "wait-on": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "nodemon": "^3.1.7"
   },
   "engines": {
     "node": "22.x",
