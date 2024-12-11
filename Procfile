@@ -1,1 +1,2 @@
-web: cd server && npm start 
+release: pnpm run seed
+web: pnpm start 

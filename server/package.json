@@ -13,16 +13,20 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "mysql2": "^3.11.5",
     "sequelize": "^6.37.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7",
-    "ts-node": "^10.9.2"
-  }
+    "nodemon": "^3.1.7"
+  },
+  "engines": {
+    "node": "21.7.1"
+  },
+  "packageManager": "pnpm@9.15.0"
 }

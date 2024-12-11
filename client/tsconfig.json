@@ -18,7 +18,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["react", "react-dom"]
+    "types": ["react", "react-dom", "node"]
   },
   "include": ["src", "vite.config.js"],
   "references": [

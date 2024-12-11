@@ -10,18 +10,24 @@
     "start": "cd server && pnpm start",
     "watch": "cd server && pnpm run watch",
     "clean": "rm -rf */dist */node_modules",
-    "heroku-postbuild": "pnpm run build"
+    "heroku-postbuild": "pnpm run build",
+    "postdeploy": "pnpm run seed",
+    "deploy": "git push origin main && git push heroku main"
   },
-  "devDependencies": {
+  "dependencies": {
     "@types/node": "^22.10.1",
-    "@vitejs/plugin-react": "^4.3.4",
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
     "typescript": "^5.7.2",
-    "wait-on": "^8.0.1"
+    "wait-on": "^8.0.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   },
   "engines": {
-    "node": "18.x",
-    "pnpm": "9.x"
+    "node": "21.7.1",
+    "pnpm": "9.15.0"
   }
 }
