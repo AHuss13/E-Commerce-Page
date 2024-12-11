@@ -21,16 +21,14 @@
     "react-router-dom": "^7.0.2",
     "@types/react": "^18.3.14",
     "@types/react-dom": "^19.0.0",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "@vitejs/plugin-react": "^4.3.4"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
-    "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "@typescript-eslint/parser": "^8.17.0",
-    "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.16.0",
     "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-react-refresh": "^0.4.16",
-    "vite": "^6.0.3"
+    "eslint-plugin-react-refresh": "^0.4.16"
   }
 }
