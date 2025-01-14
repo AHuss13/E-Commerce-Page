@@ -27,6 +27,5 @@
   },
   "engines": {
     "node": "21.7.1"
-  },
-  "packageManager": "pnpm@9.15.0"
+  }
 }

@@ -9,17 +9,22 @@ import {
   MenuItem,
   Box,
   Alert,
+  Button,
 } from "@mui/material";
 import { api } from "../../services/api";
-import { Product, Category } from "../../types";
+import { Product, Category, Tag } from "../../types";
 import ProductCard from "./ProductCard";
 import LoadingSpinner from "../LoadingSpinner";
+import AddProductForm from "./AddProductForm";
+
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [tags, setTags] = useState<Tag[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isAddFormOpen, setIsAddFormOpen] = useState(false);
 
   // Filter states
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,12 +33,14 @@ const ProductList = () => {
 
   const fetchData = async () => {
     try {
-      const [productsRes, categoriesRes] = await Promise.all([
+      const [productsRes, categoriesRes, tagsRes] = await Promise.all([
         api.getProducts(),
         api.getCategories(),
+        api.getTags(),
       ]);
       setProducts(productsRes.data);
       setCategories(categoriesRes.data);
+      setTags(tagsRes.data);
     } catch (err) {
       setError("Failed to fetch data");
     } finally {
@@ -44,6 +51,22 @@ const ProductList = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleAddProduct = async (productData: {
+    product_name: string;
+    price: number;
+    stock: number;
+    category_id: number;
+    tagIds: number[];
+  }) => {
+    try {
+      await api.createProduct(productData);
+      fetchData(); // Refresh the product list
+    } catch (error) {
+      console.error("Error creating product:", error);
+      setError("Failed to create product");
+    }
+  };
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.product_name
@@ -75,6 +98,23 @@ const ProductList = () => {
   return (
     <Container>
       <Box sx={{ mb: 4, mt: 2 }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setIsAddFormOpen(!isAddFormOpen)}
+          sx={{ mb: 2 }}
+        >
+          {isAddFormOpen ? "Cancel" : "Add Product"}
+        </Button>
+
+        <AddProductForm
+          isOpen={isAddFormOpen}
+          onClose={() => setIsAddFormOpen(false)}
+          onSubmit={handleAddProduct}
+          categories={categories}
+          tags={tags}
+        />
+
         <Grid container spacing={2}>
           <Grid item xs={12} md={4}>
             <TextField

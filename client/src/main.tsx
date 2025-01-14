@@ -5,9 +5,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import App from "./App";
 import theme from "./theme";
-import ProductList from "./components/Product/ProductList";
 import ProductDetail from "./components/Product/ProductDetail";
-
+import HomePage from "./components/HomePage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ProductList />,
+        element: <HomePage />,
       },
       {
         path: "/products/:id",
