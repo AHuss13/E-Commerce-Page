@@ -2,28 +2,28 @@ import Tag from "../models/Tag";
 
 const tagData = [
   {
-    tag_name: "rock music",
+    tag_name: "Rock Music",
   },
   {
-    tag_name: "pop music",
+    tag_name: "Pop Music",
   },
   {
-    tag_name: "blue",
+    tag_name: "Blue",
   },
   {
-    tag_name: "red",
+    tag_name: "Red",
   },
   {
-    tag_name: "green",
+    tag_name: "Green",
   },
   {
-    tag_name: "white",
+    tag_name: "White",
   },
   {
-    tag_name: "gold",
+    tag_name: "Gold",
   },
   {
-    tag_name: "pop culture",
+    tag_name: "Pop Culture",
   },
   {
     tag_name: "New Arrival",

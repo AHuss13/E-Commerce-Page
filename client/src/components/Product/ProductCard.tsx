@@ -31,7 +31,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <CardMedia
         component="img"
         height="200"
-        image={`https://source.unsplash.com/random/400x400?${product.product_name}`}
+        image={`https://placehold.co/600x400?text=${encodeURIComponent(
+          product.product_name
+        )}`}
         alt={product.product_name}
       />
       <CardContent sx={{ flexGrow: 1 }}>

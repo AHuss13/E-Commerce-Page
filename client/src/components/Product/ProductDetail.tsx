@@ -46,7 +46,9 @@ const ProductDetail = () => {
       <CardMedia
         component="img"
         height="400"
-        image={`https://source.unsplash.com/random/800x400?${product.product_name}`}
+        image={`https://placehold.co/600x400?text=${encodeURIComponent(
+          product.product_name
+        )}`}
         alt={product.product_name}
       />
       <CardContent>
